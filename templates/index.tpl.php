@@ -3,15 +3,6 @@
         <thead class = "thead-light">
         <tr>
             <th scope="col"
-                class="<?= isset($_SESSION['field']) && $_SESSION['field'] == "id" ? "table-active" : "" ?>">
-                <form action="" method="post">
-                    <a style="text-decoration: none;" href="#" onclick="parentNode.submit(); ">ID</a>
-                    <input type="hidden" name="field" value="id"/>
-                    <input type="hidden" name="direction"
-                           value="<?= isset($_SESSION['direction']) && $_SESSION['direction'] == "DESC" ? "ASC" : "DESC" ?>"/>
-                </form>
-            </th>
-            <th scope="col"
                 class="<?= isset($_SESSION['field']) && $_SESSION['field'] == "name" ? "table-active" : "" ?>">
                 <form action="" method="post">
                     <a style="text-decoration: none;" href="#" onclick="parentNode.submit();">Имя</a>
@@ -53,7 +44,6 @@
         <tbody>
         <?php foreach ($data['data'] as $task): ?>
             <tr>
-                <td><?= $task->id ?></td>
                 <td><?= $task->name ?></td>
                 <td><?= $task->email ?></td>
                 <td><?= $task->description ?></td>
