@@ -67,23 +67,19 @@ class TaskController extends Controller
 
     public function update()
     {
-        if ($this->checkAuth()) {
-            if (!empty($_POST)) {
-                $data = [
-                    'id' => $this->xssSec($_POST['id']),
-                    'name' => $this->xssSec($_POST['name']),
-                    'email' => $this->xssSec($_POST['email']),
-                    'description' => $this->xssSec($_POST['description']),
-                ];
-                $data['completed'] = isset($_POST['completed']) ? 1 : 0;
-                if (isset($_SESSION['description'])) {
-                    $data['edited'] = strcmp($_POST['description'], $_SESSION['description']) != 0 ? 1 : 0;
-                }
-                $this->model->updateById($data);
-                header("Location: /");
+        if (!empty($_POST)) {
+            $data = [
+                'id' => $this->xssSec($_POST['id']),
+                'name' => $this->xssSec($_POST['name']),
+                'email' => $this->xssSec($_POST['email']),
+                'description' => $this->xssSec($_POST['description']),
+            ];
+            $data['completed'] = isset($_POST['completed']) ? 1 : 0;
+            if (isset($_SESSION['description'])) {
+                $data['edited'] = strcmp($_POST['description'], $_SESSION['description']) != 0 ? 1 : 0;
             }
-        } else {
-            header("Location: /login");
+            $this->model->updateById($data);
+            header("Location: /");
         }
     }
 
