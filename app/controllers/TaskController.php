@@ -26,22 +26,17 @@ class TaskController extends Controller
 
     public function create()
     {
-        if ($this->checkAuth()) {
-            $this->template = TEMPLATE_PATH . "create.tpl.php";
-            if (!empty($_POST)) {
-                $data = [
-                    "name" => $this->xssSec($_POST['name']),
-                    "email" => $this->xssSec($_POST['email']),
-                    "description" => $this->xssSec($_POST['description']),
-                ];
-                $this->model->save($data);
-                header("Location: /");
-            }
-            $this->view->render($this->template, $this->pageData);
-        } else {
-            header("Location: /login");
+        $this->template = TEMPLATE_PATH . "create.tpl.php";
+        if (!empty($_POST)) {
+            $data = [
+                "name" => $this->xssSec($_POST['name']),
+                "email" => $this->xssSec($_POST['email']),
+                "description" => $this->xssSec($_POST['description']),
+            ];
+            $this->model->save($data);
+            header("Location: /");
         }
-
+        $this->view->render($this->template, $this->pageData);
     }
 
     public function edit()

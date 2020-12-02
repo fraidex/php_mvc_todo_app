@@ -14,9 +14,9 @@
     <h5 class="my-0 mr-md-auto font-weight-normal"><a style="text-decoration: none;" href="/">ToDo</a></h5>
     <nav class="my-2 my-md-0 mr-md-3">
         <a class='p-2 text-dark' href='/'>Главная</a>
+        <a class='p-2 text-dark' href='/task/create/'>Создать</a>
         <?php
         if (!empty($_SESSION) && isset($_SESSION['user'])) {
-            echo "<a class='p-2 text-dark' href='/task/create/'>Создать</a>";
             echo "<a class='btn btn-outline-danger' href='/login/logout/'>Выйти</a>";
         } else {
             echo "<a class='btn btn-outline-primary' href='/login/'>Войти</a>";
